@@ -1,4 +1,4 @@
-﻿# Contributing to This Project
+# Contributing to This Project
 
 Thank you for your interest in contributing! We welcome contributions from everyone, whether you are fixing a bug, proposing a feature, improving documentation, or refactoring code.
 

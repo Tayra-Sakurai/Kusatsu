@@ -1,4 +1,4 @@
-﻿## Summary of Your Pull Request
+## Summary of Your Pull Request
 
 What matters in the Pull Request.
 

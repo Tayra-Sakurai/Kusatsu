@@ -1,4 +1,4 @@
-﻿# Accessibility and Design Preservation Guidelines
+# Accessibility and Design Preservation Guidelines
 
 For this project (C# .NET / Windows App SDK / WinUI 3), our top priority is to build an application that offers a consistent user experience and complies fully with Windows accessibility features.
 
