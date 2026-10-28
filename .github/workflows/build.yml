@@ -1,0 +1,75 @@
+name: Test and build the solution
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Please enter the release tag.
+        type: string
+        required: true
+      note:
+        description: Please enter the release note.
+        type: string
+        required: true
+      environment:
+        description: Select environment
+        type: environment
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    name: Build the package
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v3
+
+      - name: Restore the package
+        run: msbuild Kusatsu.slnx /t:Restore /p:Configuration=Release /p:SelfContained=true
+
+      - name: Build the package
+        run: msbuild Kusatsu.slnx /p:Configuration=Release /p:Platform=x64 /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxBundle=Always /p:GenerateAppxPackageOnBuild=true /p:SelfContained=true /p:TargetFramework=net10.0-windows10.0.26100.0 /p:GenerateAppxInstallerFile=true /p:OutputPath=Packages
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          path: |
+            Packages/**/*.msix
+            Packages/**/*.msixbundle
+            Packages/**/*.cer
+          name: Packages
+
+  release:
+    runs-on: ubuntu-latest
+    name: Make a release
+    environment:
+      name: ${{ inputs.environment }}
+      deployment: false
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v8
+        with:
+          path: Packages
+
+      - name: Make a release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ inputs.tag }}
+          files: |
+            Packages/**/*.msixbundle
+            Packages/**/*.msix
+            Packages/**/*.cer
+          make_latest: true
+          body: ${{ inputs.note }}
+          draft: true
