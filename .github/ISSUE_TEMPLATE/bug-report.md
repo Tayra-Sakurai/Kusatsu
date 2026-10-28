@@ -7,6 +7,7 @@ type: Bug
 title: "[BUG]: "
 
 ---
+
 **What behavior the bug shows**
 Please tell us the behavior of the bug.
 
