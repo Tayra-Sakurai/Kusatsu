@@ -16,5 +16,8 @@ namespace Maiko.Models
         public int MethodId { get; set; }
         public Method? Method { get; set; }
         public double Amount { get; set; } = 0d;
+        public int CategoryId { get; set; }
+        public SmallCategory? Category { get; set; }
+        public DateTime DateTime { get; set; } = DateTime.Now;
     }
 }

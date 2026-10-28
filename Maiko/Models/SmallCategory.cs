@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Maiko.Models
@@ -11,5 +12,6 @@ namespace Maiko.Models
     {
         public int MediumCategoryId { get; set; }
         public MediumCategory? MediumCategory { get; set; }
+        public ObservableCollection<Item> Items { get; } = [];
     }
 }
