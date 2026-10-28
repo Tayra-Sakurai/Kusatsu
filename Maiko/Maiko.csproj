@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.22000.0</TargetPlatformMinVersion>
+    <RootNamespace>Maiko</RootNamespace>
+    <UseWinUI>true</UseWinUI>
+    <WinUISDKReferences>false</WinUISDKReferences>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Version>0.0.1-alpha.1</Version>
+    <Authors>Tayra Sakurai</Authors>
+    <Copyright>Copyright (C) 2026 Tayra Sakurai</Copyright>
+    <Description>A database package for Kusatsu.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Tayra-Sakurai/Kusatsu</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>WinUI;Windows App SDK;Entity Framework Core</PackageTags>
+    <PackageReleaseNotes>First Alpha test.</PackageReleaseNotes>
+    <NeutralLanguage>ja-JP</NeutralLanguage>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*-*" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*-experimental.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tayra.CommunityToolkit.Localized.Mvvm\Tayra.CommunityToolkit.Localized.Mvvm.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PRIResource Update="Strings\ja-JP\Resources.resw" />
+  </ItemGroup>
+</Project>

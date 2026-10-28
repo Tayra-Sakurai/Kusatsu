@@ -4,10 +4,15 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
   <Project Path="Kusatsu/Kusatsu.csproj">
     <Platform Solution="*|ARM64" Project="ARM64" />
     <Platform Solution="*|x64" Project="x64" />
     <Platform Solution="*|x86" Project="x86" />
     <Deploy />
   </Project>
+  <Project Path="Maiko/Maiko.csproj" Id="e20a30c7-23e1-4841-8a69-b1d3e9121975" />
+  <Project Path="Tayra.CommunityToolkit.Localized.Mvvm/Tayra.CommunityToolkit.Localized.Mvvm.csproj" Id="19b9e5e3-af8f-4071-8c58-e0177ce448de" />
 </Solution>
