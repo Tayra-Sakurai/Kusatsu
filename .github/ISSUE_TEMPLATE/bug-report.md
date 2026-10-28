@@ -1,25 +1,28 @@
 ﻿---
 name: Bug Report
-about: Please let us know about the bugs.
-labels: bug
-assignees: Tayra-Sakurai
-type: Bug
+about: Reporting a bug
 title: "[BUG]: "
+assignees: Tayra-Sakurai
+labels: bug
+type: Bug
 
 ---
 
-**What behavior the bug shows**
-Please tell us the behavior of the bug.
+**Bug Summary**
+Please tell us a brief summary of the bug.
+
+**Expected Behavior**
+Please tell us how you expect this App to do.
 
 **How to Reproduce**
-Please specify the steps to reproduce the bug.
-1. Click "..."
-1. Scroll to "..."
-1. Click "..."
-1. Bug occurs
+Please tell us the step-by-step procuedure to reproduce the bug.
+1. Go to "..."
+2. Scroll to "..."
+3. Click "..."
+4. Bug occurs
 
-**Windows Information**
-Please tell us the Windows machine version number (e.g. 10.0.22000.0)
+**Version Information**
+Please tell us your machine's version (e.g. Windows 11 23H2).
 
 **Additional Context**
-Please tell us the additional context of bug.
+Please tell us the additional contexts of the bug if you can.
