@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Kusatsu (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Kusatsu (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
