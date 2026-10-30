@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MinInvalidMessage" xml:space="preserve">
-    <value>This field must be at least the minimum value.</value>
+  <data name="RangeErrorMessage" xml:space="preserve">
+    <value>{0} must be between {1} and {2}.</value>
   </data>
   <data name="RequiredMessage" xml:space="preserve">
     <value>This field is required.</value>
