@@ -13,5 +13,8 @@ namespace Maiko.Models
         public int LargeCategoryId { get; set; }
         public LargeCategory? LargeCategory { get; set; }
         public ObservableCollection<SmallCategory> SmallCategories { get; } = [];
+        public double TotalIncome => SmallCategories.Sum(sc => sc.TotalIncome);
+        public double TotalExpense => SmallCategories.Sum(sc => sc.TotalExpense);
+        public double MonthlyTotal => SmallCategories.Sum(sc => sc.MonthlyTotal);
     }
 }

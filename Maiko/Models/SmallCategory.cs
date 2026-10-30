@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Maiko.Models
@@ -12,6 +11,12 @@ namespace Maiko.Models
     {
         public int MediumCategoryId { get; set; }
         public MediumCategory? MediumCategory { get; set; }
-        public ObservableCollection<Item> Items { get; } = [];
+        public ICollection<Item> Items { get; } = new HashSet<Item>();
+        public double TotalIncome => Items.Sum(i => i.IsExpense ? 0d : i.Amount);
+        public double TotalExpense => Items.Sum(i => i.IsExpense ? i.Amount : 0d);
+        public double MonthlyTotal => 
+            Items
+            .Where(item => item.DateTime.Month == DateTime.Now.Month)
+            .Sum(item => item.IsExpense ? item.Amount : 0d);
     }
 }

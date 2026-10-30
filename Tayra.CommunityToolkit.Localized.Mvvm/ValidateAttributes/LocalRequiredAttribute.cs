@@ -13,16 +13,44 @@ namespace CommunityToolkit.Localized.Mvvm.ValidateAttributes
     public class LocalRequiredAttribute : RequiredAttribute
     {
         /// <summary>
-        /// Gets the resource name.
+        /// Gets or sets the file name of the resource file used to resolve the error message.
         /// </summary>
-        public required string ResourceName { get; init; }
-        public string? ResourceFile { get; init; }
+        /// <remarks>Setting this property updates the error message. A null, empty, or whitespace value
+        /// uses the default resource loader.</remarks>
+        public string? ErrorMessageFileName
+        {
+            get;
+
+            set
+            {
+                field = value;
+                ResourceLoader resourceLoader = string.IsNullOrWhiteSpace(value) ? new() : new(ResourceLoader.GetDefaultResourceFilePath(), value);
+                ErrorMessage = resourceLoader.GetString(ErrorMessageResourceName);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the resource used to retrieve the localized error message.
+        /// </summary>
+        /// <remarks>Setting this property also updates the error message using the specified resource
+        /// name.</remarks>
+        public new required string ErrorMessageResourceName
+        {
+            get;
+
+            set
+            {
+                ArgumentException.ThrowIfNullOrWhiteSpace(value);
+                field = value;
+
+                ResourceLoader resourceLoader = string.IsNullOrWhiteSpace(ErrorMessageFileName) ? new() : new(ResourceLoader.GetDefaultResourceFilePath(), ErrorMessageFileName);
+                ErrorMessage = resourceLoader.GetString(value);
+            }
+        }
 
         public LocalRequiredAttribute()
             : base()
         {
-            ResourceLoader resourceLoader = string.IsNullOrWhiteSpace(ResourceFile) ? new() : new(ResourceFile);
-            ErrorMessage = resourceLoader.GetString(ResourceName);
         }
     }
 }

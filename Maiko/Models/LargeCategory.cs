@@ -11,5 +11,8 @@ namespace Maiko.Models
     public class LargeCategory : Category
     {
         public ObservableCollection<MediumCategory> MediumCategories { get; } = [];
+        public double TotalExpense => MediumCategories.Sum(mc => mc.TotalExpense);
+        public double TotalIncome => MediumCategories.Sum(mc => mc.TotalIncome);
+        public double MonthlyTotal => MediumCategories.Sum(mc => mc.MonthlyTotal);
     }
 }

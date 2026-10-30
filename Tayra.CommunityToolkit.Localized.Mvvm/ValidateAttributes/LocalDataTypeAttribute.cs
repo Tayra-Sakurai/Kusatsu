@@ -24,7 +24,7 @@ namespace CommunityToolkit.Localized.Mvvm.ValidateAttributes
             set
             {
                 field = value;
-                ResourceLoader resourceLoader = string.IsNullOrWhiteSpace(value) ? new() : new(value);
+                ResourceLoader resourceLoader = string.IsNullOrWhiteSpace(value) ? new() : new(ResourceLoader.GetDefaultResourceFilePath(), value);
                 ErrorMessage = resourceLoader.GetString(ErrorMessageResourceName);
             }
         }
@@ -43,7 +43,7 @@ namespace CommunityToolkit.Localized.Mvvm.ValidateAttributes
                 ArgumentException.ThrowIfNullOrWhiteSpace(value);
                 field = value;
 
-                ResourceLoader resourceLoader = string.IsNullOrWhiteSpace(ErrorMessageFileName) ? new() : new(ErrorMessageFileName);
+                ResourceLoader resourceLoader = string.IsNullOrWhiteSpace(ErrorMessageFileName) ? new() : new(ResourceLoader.GetDefaultResourceFilePath(), ErrorMessageFileName);
                 ErrorMessage = resourceLoader.GetString(value);
             }
         }
