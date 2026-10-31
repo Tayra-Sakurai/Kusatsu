@@ -72,6 +72,8 @@ jobs:
       name: ${{ inputs.environment }}
       deployment: false
     needs: build
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v8
