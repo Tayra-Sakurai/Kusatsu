@@ -17,6 +17,7 @@ namespace Maiko.Contexts
         public DbSet<Item> Items { get; set; }
         public DbSet<Method> Methods { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +32,7 @@ namespace Maiko.Contexts
                 .HasDefaultValueSql("datetime('now', 'localtime')");
             modelBuilder.Entity<Method>();
             modelBuilder.Entity<Account>();
+            modelBuilder.Entity<Tag>();
         }
 
         public MaikoContext(DbContextOptions<MaikoContext> dbContextOptions)

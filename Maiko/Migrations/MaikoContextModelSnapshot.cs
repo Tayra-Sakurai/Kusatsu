@@ -17,6 +17,21 @@ namespace Maiko.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.14");
 
+            modelBuilder.Entity("ItemTag", b =>
+                {
+                    b.Property<int>("ItemsId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TagsId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ItemsId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("ItemTag");
+                });
+
             modelBuilder.Entity("Maiko.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -108,6 +123,21 @@ namespace Maiko.Migrations
                     b.UseTphMappingStrategy();
                 });
 
+            modelBuilder.Entity("Maiko.Models.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("Maiko.Models.LargeCategory", b =>
                 {
                     b.HasBaseType("Maiko.Models.Category");
@@ -144,6 +174,21 @@ namespace Maiko.Migrations
                     b.HasBaseType("Maiko.Models.Method");
 
                     b.HasDiscriminator().HasValue("Account");
+                });
+
+            modelBuilder.Entity("ItemTag", b =>
+                {
+                    b.HasOne("Maiko.Models.Item", null)
+                        .WithMany()
+                        .HasForeignKey("ItemsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Maiko.Models.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Maiko.Models.Item", b =>

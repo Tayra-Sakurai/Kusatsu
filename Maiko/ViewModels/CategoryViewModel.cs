@@ -4,7 +4,9 @@
 using CommunityToolkit.Localized.Mvvm.ValidateAttributes;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Maiko.Contexts;
+using Maiko.Messages;
 using Maiko.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -26,6 +28,12 @@ namespace Maiko.ViewModels
             MediumCategories = [];
             PropertyChanged += CategoryViewModel_PropertyChanged;
             category = new LargeCategory();
+            ErrorsChanged += CategoryViewModel_ErrorsChanged;
+        }
+
+        private void CategoryViewModel_ErrorsChanged(object? sender, System.ComponentModel.DataErrorsChangedEventArgs e)
+        {
+            SaveCommand.NotifyCanExecuteChanged();
         }
 
         private void CategoryViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -188,6 +196,70 @@ namespace Maiko.ViewModels
         {
             get => category.Budget;
             set => SetProperty(category.Budget, value, category, (m, v) => m.Budget = v, true);
+        }
+
+        [RelayCommand(AllowConcurrentExecutions = false, CanExecute = nameof(CanSave))]
+        private async Task SaveAsync()
+        {
+            if (HasErrors)
+                return;
+
+            using MaikoContext context = await factory.CreateDbContextAsync();
+
+            if (category is LargeCategory largeCategory)
+            {
+                largeCategory.MediumCategories.Clear();
+                context.Update(largeCategory);
+            }
+
+            if (category is MediumCategory mediumCategory)
+            {
+                mediumCategory.LargeCategory = null;
+                mediumCategory.SmallCategories.Clear();
+                context.Update(mediumCategory);
+            }
+
+            if (category is SmallCategory smallCategory)
+            {
+                smallCategory.MediumCategory = null;
+                smallCategory.Items.Clear();
+                context.Update(smallCategory);
+            }
+
+            await context.SaveChangesAsync();
+            WeakReferenceMessenger.Default.Send(new CategoryUpdatedMessage(category));
+        }
+
+        private bool CanSave()
+        {
+            return !HasErrors;
+        }
+
+        [RelayCommand(AllowConcurrentExecutions = false)]
+        private async Task RemoveAsync()
+        {
+            using MaikoContext context = await factory.CreateDbContextAsync();
+
+            if (category is LargeCategory largeCategory)
+            {
+                largeCategory.MediumCategories.Clear();
+                context.Remove(largeCategory);
+            }
+            else if (category is MediumCategory mediumCategory)
+            {
+                mediumCategory.LargeCategory = null;
+                mediumCategory.SmallCategories.Clear();
+                context.Remove(mediumCategory);
+            }
+            else if (category is SmallCategory smallCategory)
+            {
+                smallCategory.MediumCategory = null;
+                smallCategory.Items.Clear();
+                context.Remove(smallCategory);
+            }
+
+            await context.SaveChangesAsync();
+            WeakReferenceMessenger.Default.Send(new CategoryUpdatedMessage(category));
         }
     }
 }

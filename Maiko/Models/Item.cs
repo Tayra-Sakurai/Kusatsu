@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Maiko.Models
@@ -19,5 +20,6 @@ namespace Maiko.Models
         public int CategoryId { get; set; }
         public SmallCategory? Category { get; set; }
         public DateTime DateTime { get; set; } = DateTime.Now;
+        public ObservableCollection<Tag> Tags { get; } = [];
     }
 }
