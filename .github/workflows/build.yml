@@ -42,7 +42,7 @@ jobs:
         run: |
           $pfx_bytes = [System.Convert]::FromBase64String("${{ secrets.WINUI_SECRET_KEY }}")
           $certificatePath = "GitHubActionsWorkflow.pfx"
-          [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+          [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_bytes)
 
       - name: Restore the package
         run: msbuild Kusatsu.slnx /t:Restore /p:Configuration=Release /p:SelfContained=true
