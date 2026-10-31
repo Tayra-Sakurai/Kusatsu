@@ -43,9 +43,10 @@ jobs:
           $pfx_bytes = [System.Convert]::FromBase64String("${{ secrets.WINUI_SECRET_KEY }}")
           $certificatePath = "GitHubActionsWorkflow.pfx"
           [IO.File]::WriteAllBytes("$certificatePath", $pfx_bytes)
+          [IO.File]::WriteAllBytes("Kusatsu\$certificatePath", $pfx_bytes)
 
       - name: Restore the package
-        run: msbuild Kusatsu.slnx /t:Restore /p:Configuration=Release /p:SelfContained=true /p:Platform=x64
+        run: msbuild Kusatsu.slnx /t:Restore /p:Configuration=Release /p:SelfContained=true /p:Platform=x64 /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx
 
       - name: Build the package
         run: msbuild Kusatsu.slnx /p:Configuration=Release /p:Platform=x64 /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxBundle=Always /p:GenerateAppxPackageOnBuild=true /p:SelfContained=true /p:TargetFramework=net10.0-windows10.0.26100.0 /p:GenerateAppxInstallerFile=true /p:OutputPath=Packages\ /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx
