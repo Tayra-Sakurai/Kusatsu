@@ -104,5 +104,8 @@
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageCertificateThumbprint>98015FEA51A6938D3077C6C76CA182465DC241D0</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>Kusatsu_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
 </Project>
