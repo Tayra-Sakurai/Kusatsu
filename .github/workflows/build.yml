@@ -55,9 +55,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           path: |
-            Packages/**/*.msix
-            Packages/**/*.msixbundle
-            Packages/**/*.cer
+            Packages/**.msix
+            Packages/**.msixbundle
+            Packages/**.cer
           name: Packages
 
   release:
