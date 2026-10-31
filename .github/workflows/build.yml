@@ -40,7 +40,7 @@ jobs:
 
       - name: Decode the .pfx
         run: |
-          $pfx_bytes = [System.Convert]::FromBase64String(${{ secrets.WINUI_SECRET_KEY }})
+          $pfx_bytes = [System.Convert]::FromBase64String("${{ secrets.WINUI_SECRET_KEY }}")
           $certificatePath = "GitHubActionsWorkflow.pfx"
           [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
