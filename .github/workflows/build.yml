@@ -22,6 +22,10 @@ jobs:
   build:
     runs-on: windows-latest
     name: Build the package
+    environment:
+      name: build-with-secret-key
+      deployment: false
+
     steps:
       - name: Check out the repository
         uses: actions/checkout@v7
@@ -34,11 +38,17 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v3
 
+      - name: Decode the .pfx
+        run: |
+          $pfx_bytes = [System.Convert]::FromBase64String(${{ secrets.WINUI_SECRET_KEY }})
+          $certificatePath = "GitHubActionsWorkflow.pfx"
+          [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+
       - name: Restore the package
         run: msbuild Kusatsu.slnx /t:Restore /p:Configuration=Release /p:SelfContained=true
 
       - name: Build the package
-        run: msbuild Kusatsu.slnx /p:Configuration=Release /p:Platform=x64 /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxBundle=Always /p:GenerateAppxPackageOnBuild=true /p:SelfContained=true /p:TargetFramework=net10.0-windows10.0.26100.0 /p:GenerateAppxInstallerFile=true /p:OutputPath=Packages
+        run: msbuild Kusatsu.slnx /p:Configuration=Release /p:Platform=x64 /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxBundle=Always /p:GenerateAppxPackageOnBuild=true /p:SelfContained=true /p:TargetFramework=net10.0-windows10.0.26100.0 /p:GenerateAppxInstallerFile=true /p:OutputPath=Packages\ /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
