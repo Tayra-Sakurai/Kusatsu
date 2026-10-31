@@ -61,8 +61,8 @@ jobs:
             Packages/**.msix
             Packages/**.msixbundle
             Packages/**.cer
-            Kusatsu/AppPackages/**.msixbundle
-            Kusatsu/AppPackages/**.cer
+            Kusatsu/Packages/**.msixbundle
+            Kusatsu/Packages/**.cer
           name: Packages
 
   release:
