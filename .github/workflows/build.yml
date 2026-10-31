@@ -58,11 +58,11 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           path: |
-            Packages/**.msix
-            Packages/**.msixbundle
-            Packages/**.cer
-            Kusatsu/Packages/**.msixbundle
-            Kusatsu/Packages/**.cer
+            Packages/**/*.msix
+            Packages/**/*.msixbundle
+            Packages/**/*.cer
+            Kusatsu/Packages/**/*.msixbundle
+            Kusatsu/Packages/**/*.cer
           name: Packages
 
   release:
