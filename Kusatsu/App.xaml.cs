@@ -45,6 +45,10 @@ namespace Kusatsu
         /// <param name="args">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
+            IDbContextFactory<MaikoContext> dbContextFactory = Ioc.Default.GetRequiredService<IDbContextFactory<MaikoContext>>();
+            using (MaikoContext context = await dbContextFactory.CreateDbContextAsync())
+                await context.Database.MigrateAsync();
+
             _window = new MainWindow();
             OverlappedPresenter overlappedPresenter = OverlappedPresenter.Create();
             overlappedPresenter.IsMaximizable = true;

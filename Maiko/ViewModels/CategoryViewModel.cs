@@ -175,6 +175,9 @@ namespace Maiko.ViewModels
         {
             this.category = category;
 
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(Budget));
+
             if (category is SmallCategory ||
                 category is MediumCategory)
             {

@@ -13,6 +13,12 @@ namespace Kusatsu.Pages
         public SettingsPage()
         {
             InitializeComponent();
+            CategoryJumper.Click += CategoryJumper_Click;
+        }
+
+        private void CategoryJumper_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CategoriesPage));
         }
     }
 }
