@@ -72,7 +72,7 @@ namespace Maiko.ViewModels
                     return LargeCategories.SingleOrDefault(lc => lc.Id == mediumCategory.LargeCategoryId);
 
                 if (category is SmallCategory)
-                    return LargeCategories.SingleOrDefault(lc => lc.Id == MediumCategory?.Id);
+                    return LargeCategories.SingleOrDefault(lc => lc.Id == MediumCategory?.LargeCategoryId);
 
                 return null;
             }
