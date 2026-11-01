@@ -57,6 +57,9 @@ namespace Maiko.ViewModels
         [ObservableProperty]
         public partial ObservableCollection<MediumCategory> MediumCategories { get; set; }
 
+        public bool IsLargeCategorySelectable => category is MediumCategory || category is SmallCategory;
+        public bool IsMediumCategorySelectable => category is SmallCategory;
+
         public LargeCategory? LargeCategory
         {
             get
@@ -177,6 +180,8 @@ namespace Maiko.ViewModels
 
             OnPropertyChanged(nameof(Name));
             OnPropertyChanged(nameof(Budget));
+            OnPropertyChanged(nameof(IsLargeCategorySelectable));
+            OnPropertyChanged(nameof(IsMediumCategorySelectable));
 
             if (category is SmallCategory ||
                 category is MediumCategory)

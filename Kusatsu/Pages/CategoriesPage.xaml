@@ -114,6 +114,23 @@
                         </controls:DataTable>
                     </controls:HeaderedTreeView.Header>
                 </controls:HeaderedTreeView>
+
+                <CommandBar
+                    Grid.Row="1"
+                    DefaultLabelPosition="Bottom">
+                    <AppBarButton
+                        x:Uid="/ButtonResources/Add"
+                        Icon="Add"
+                        Command="{x:Bind viewModel.AddCommand}" />
+                    <AppBarButton
+                        x:Uid="/ButtonResources/Detail"
+                        Icon="More"
+                        Command="{x:Bind viewModel.InvokeCommand}" />
+                    <AppBarButton
+                        x:Uid="/ButtonResources/Sync"
+                        Icon="Sync"
+                        Command="{x:Bind viewModel.LoadCommand}" />
+                </CommandBar>
             </Grid>
         </Border>
     </Grid>

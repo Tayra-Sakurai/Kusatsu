@@ -126,6 +126,12 @@
   <data name="CategoryJumpText.Text" xml:space="preserve">
     <value>Edit or View</value>
   </data>
+  <data name="CategoryPage.Text" xml:space="preserve">
+    <value>Detail on a Category</value>
+  </data>
+  <data name="DeleteCheckMessage.Text" xml:space="preserve">
+    <value>You are trying to delete a record permanently. This action is irreversible. Are you sure to delete the record?</value>
+  </data>
   <data name="Home.Text" xml:space="preserve">
     <value>Home</value>
   </data>

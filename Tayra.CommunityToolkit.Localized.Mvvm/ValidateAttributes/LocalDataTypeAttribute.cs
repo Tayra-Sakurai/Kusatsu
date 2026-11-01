@@ -25,7 +25,7 @@ namespace CommunityToolkit.Localized.Mvvm.ValidateAttributes
             {
                 field = value;
                 ResourceLoader resourceLoader = string.IsNullOrWhiteSpace(value) ? new() : new(ResourceLoader.GetDefaultResourceFilePath(), value);
-                ErrorMessage = resourceLoader.GetString(ErrorMessageResourceName);
+                ErrorMessage = string.IsNullOrEmpty(ErrorMessageResourceName) ? string.Empty : resourceLoader.GetString(ErrorMessageResourceName);
             }
         }
 

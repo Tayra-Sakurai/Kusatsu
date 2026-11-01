@@ -6,7 +6,7 @@
     xmlns:local="using:Kusatsu.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:Maiko.Models"
+    xmlns:controls="using:Kusatsu.Templates"
     mc:Ignorable="d">
 
     <Grid
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock
-            x:Uid="CategoriesPageTitle"
+            x:Uid="CategoryPage"
             Style="{StaticResource TitleTextBlockStyle}" />
 
         <Border
@@ -27,22 +27,71 @@
             <Grid
                 RowSpacing="4">
 
-                <Grid.Resources>
-                    <DataTemplate
-                        x:Key="LargeCategoryTemplate"
-                        x:DataType="models:LargeCategory">
-                        <TreeViewItem
-                            ItemsSource="{x:Bind MediumCategories}"
-                            Content="{x:Bind Name}" />
-                    </DataTemplate>
-                </Grid.Resources>
-
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                
-                
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ComboBox
+                    ItemsSource="{x:Bind viewModel.LargeCategories}"
+                    SelectedItem="{x:Bind viewModel.LargeCategory, Mode=TwoWay}"
+                    IsEnabled="{x:Bind viewModel.IsLargeCategorySelectable, Mode=OneWay}"
+                    DisplayMemberPath="Name"
+                    x:Uid="/ControlResources/LargeCategory" />
+
+                <ComboBox
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    ItemsSource="{x:Bind viewModel.MediumCategories}"
+                    SelectedItem="{x:Bind viewModel.MediumCategory, Mode=TwoWay}"
+                    DisplayMemberPath="Name"
+                    IsEnabled="{x:Bind viewModel.IsMediumCategorySelectable, Mode=OneWay}"
+                    x:Uid="/ControlResources/MediumCategory" />
+
+                <controls:ValidationTextBox
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Text="{x:Bind viewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Property="Name"
+                    NotifyDataErrorInfo="{x:Bind viewModel}"
+                    x:Uid="/ControlResources/Name" />
+
+                <NumberBox
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Minimum="0"
+                    Value="{x:Bind viewModel.Budget, Mode=TwoWay}"
+                    x:Uid="/ControlResources/Budget" />
+
+                <CommandBar
+                    VerticalAlignment="Bottom"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    DefaultLabelPosition="Bottom">
+                    <AppBarButton
+                        Icon="Save"
+                        x:Uid="/ButtonResources/Save"
+                        Command="{x:Bind viewModel.SaveCommand}" />
+
+                    <AppBarButton
+                        Icon="Delete"
+                        x:Uid="/ButtonResources/Delete"
+                        Command="{x:Bind viewModel.RemoveCommand}" />
+
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton
+                            Icon="Sync"
+                            x:Uid="/ButtonResources/Sync"
+                            Command="{x:Bind viewModel.LoadCommand}" />
+                    </CommandBar.SecondaryCommands>
+                </CommandBar>
             </Grid>
         </Border>
     </Grid>
