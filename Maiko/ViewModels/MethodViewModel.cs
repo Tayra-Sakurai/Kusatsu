@@ -77,6 +77,7 @@ namespace Maiko.ViewModels
             WeakReferenceMessenger.Default.Send(new MethodUpdatedMessage(method));
 
             method = new();
+            OnPropertyChanged(nameof(Name));
         }
 
         private bool CanSave()

@@ -18,6 +18,7 @@
   <ItemGroup>
     <None Remove="Pages\CategoriesPage.xaml" />
     <None Remove="Pages\CategoryPage.xaml" />
+    <None Remove="Pages\ItemsPage.xaml" />
     <None Remove="Pages\MethodsPage.xaml" />
     <None Remove="UserControls\MethodEdit.xaml" />
     <None Remove="UserControls\MethodsView.xaml" />
@@ -85,6 +86,11 @@
     <ProjectReference Include="..\Maiko\Maiko.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Pages\ItemsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Pages\MethodsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,7 +133,7 @@
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">False</PublishTrimmed>
     <DefaultLanguage>ja-JP</DefaultLanguage>
     <Title>Kusatsu</Title>
-    <Version>0.0.1-alpha.2</Version>
+    <Version>0.0.1-alpha.3</Version>
     <Authors>Tayra Sakurai</Authors>
     <Copyright>Copyright (C) 2026 Tayra Sakurai</Copyright>
     <RepositoryUrl>https://github.com/Tayra-Sakurai/Kusatsu</RepositoryUrl>
@@ -138,7 +144,7 @@
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageCertificateThumbprint></PackageCertificateThumbprint>
-    <AssemblyVersion>0.0.1.1</AssemblyVersion>
-    <FileVersion>0.0.1.1</FileVersion>
+    <AssemblyVersion>0.0.1.2</AssemblyVersion>
+    <FileVersion>0.0.1.2</FileVersion>
   </PropertyGroup>
 </Project>

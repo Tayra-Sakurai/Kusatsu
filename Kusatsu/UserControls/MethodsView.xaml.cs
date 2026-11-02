@@ -25,10 +25,11 @@ namespace Kusatsu.UserControls
 {
     public sealed partial class MethodsView : UserControl
     {
-        private MethodsViewModel? viewModel;
+        private MethodsViewModel viewModel;
 
         public MethodsView()
         {
+            viewModel = Ioc.Default.GetRequiredService<MethodsViewModel>();
             InitializeComponent();
 
             Unloaded += MethodsView_Unloaded;
@@ -37,7 +38,6 @@ namespace Kusatsu.UserControls
 
         private async void MethodsView_Loading(FrameworkElement sender, object e)
         {
-            viewModel = Ioc.Default.GetRequiredService<MethodsViewModel>();
             viewModel.IsActive = true;
             await viewModel.LoadAsync();
         }

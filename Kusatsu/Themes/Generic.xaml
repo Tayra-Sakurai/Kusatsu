@@ -24,4 +24,25 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="local2:ValidationNumberBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local2:ValidationNumberBox">
+                    <StackPanel Spacing="4">
+                        <NumberBox
+                            Name="TextBox"
+                            Value="{TemplateBinding Value}"
+                            Header="{TemplateBinding Header}"
+                            PlaceholderText="{TemplateBinding PlaceholderText}" />
+                        <TextBlock
+                            Name="Caption"
+                            TextWrapping="WrapWholeWords"
+                            Style="{StaticResource CaptionTextBlockStyle}"
+                            Foreground="{ThemeResource SystemErrorTextColor}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

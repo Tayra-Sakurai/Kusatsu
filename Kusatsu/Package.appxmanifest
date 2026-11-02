@@ -12,16 +12,16 @@
   <Identity
     Name="2a2a6387-620b-479e-9810-e967fe110576"
     Publisher="CN=taira"
-    Version="0.0.1.0" />
+    Version="0.0.1.2" />
 
-  <mp:PhoneIdentity PhoneProductId="2a2a6387-620b-479e-9810-e967fe110576" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="2a2a6387-620b-479e-9810-e967fe110576" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
 
   <Properties>
     <DisplayName>Kusatsu</DisplayName>
     <PublisherDisplayName>taira</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
     <uap10:PackageIntegrity>
-      <uap10:Content Enforcement="on"/>
+      <uap10:Content Enforcement="on" />
     </uap10:PackageIntegrity>
   </Properties>
 
@@ -31,7 +31,8 @@
   </Dependencies>
 
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="ja-jp" />
+    <Resource Language="en-us" />
   </Resources>
 
   <Applications>

@@ -25,10 +25,11 @@ namespace Kusatsu.UserControls
 {
     public sealed partial class MethodEdit : UserControl
     {
-        private MethodViewModel? viewModel;
+        private MethodViewModel viewModel;
 
         public MethodEdit()
         {
+            viewModel = Ioc.Default.GetRequiredService<MethodViewModel>();
             InitializeComponent();
             Unloaded += MethodEdit_Unloaded;
             Loading += MethodEdit_Loading;
@@ -36,7 +37,6 @@ namespace Kusatsu.UserControls
 
         private void MethodEdit_Loading(FrameworkElement sender, object e)
         {
-            viewModel = Ioc.Default.GetRequiredService<MethodViewModel>();
             viewModel.IsActive = true;
         }
 
