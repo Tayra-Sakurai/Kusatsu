@@ -82,8 +82,21 @@
 
                     <AppBarButton
                         Icon="Delete"
-                        x:Uid="/ButtonResources/Delete"
-                        Command="{x:Bind viewModel.RemoveCommand}" />
+                        x:Uid="/ButtonResources/Delete">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel Spacing="4">
+                                    <TextBlock
+                                        x:Uid="DeleteCheckMessage"
+                                        Style="{StaticResource BaseTextBlockStyle}" />
+                                    <Button
+                                        Style="{StaticResource AccentButtonStyle}"
+                                        Command="{x:Bind viewModel.RemoveCommand}"
+                                        x:Uid="/ButtonResources/DeleteConfirm" />
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
 
                     <CommandBar.SecondaryCommands>
                         <AppBarButton

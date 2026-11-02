@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Kusatsu.UserControls.MethodEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Kusatsu.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Kusatsu.Templates"
+    mc:Ignorable="d">
+
+    <StackPanel Spacing="4">
+        <controls:ValidationTextBox
+            Text="{x:Bind viewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Property="Name"
+            NotifyDataErrorInfo="{x:Bind viewModel}"
+            x:Uid="/ControlResources/Name" />
+
+        <CommandBar
+            DefaultLabelPosition="Bottom">
+            <AppBarButton
+                Icon="Save"
+                x:Uid="/ButtonResources/Save"
+                Command="{x:Bind viewModel.SaveCommand}" />
+
+            <AppBarButton
+                Icon="Delete"
+                x:Uid="/ButtonResources/Delete">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel Spacing="4">
+                            <TextBlock
+                                Style="{StaticResource BaseTextBlockStyle}"
+                                x:Uid="DeleteCheckMessage" />
+                            <Button
+                                Style="{StaticResource AccentButtonStyle}"
+                                x:Uid="/ButtonResources/DeleteConfirm"
+                                Command="{x:Bind viewModel.RemoveCommand}" />
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+    </StackPanel>
+</UserControl>

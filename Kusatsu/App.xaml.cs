@@ -104,6 +104,8 @@ namespace Kusatsu
                 optionsBuilder.UseSqlite($"Data Source={System.IO.Path.Join(Microsoft.Windows.Storage.ApplicationData.GetDefault().LocalFolder.Path, "Maiko.db")}"));
             services.AddTransient<CategoriesViewModel>();
             services.AddTransient<CategoryViewModel>();
+            services.AddTransient<MethodsViewModel>();
+            services.AddTransient<MethodViewModel>();
 
             if (isAiEnabled)
             {

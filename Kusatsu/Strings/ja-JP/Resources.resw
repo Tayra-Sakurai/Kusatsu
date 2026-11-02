@@ -132,8 +132,20 @@
   <data name="DeleteCheckMessage.Text" xml:space="preserve">
     <value>あなたはレコードを削除しようとしています。この操作は取り消せません。本当に実行しますか。</value>
   </data>
+  <data name="ExpensesPage.Text" xml:space="preserve">
+    <value>支出の部</value>
+  </data>
   <data name="Home.Text" xml:space="preserve">
     <value>ホーム</value>
+  </data>
+  <data name="IncomesPage.Text" xml:space="preserve">
+    <value>収入の部</value>
+  </data>
+  <data name="ItemsHomePage.Text" xml:space="preserve">
+    <value>収支表</value>
+  </data>
+  <data name="MethodsPage.Text" xml:space="preserve">
+    <value>決済手段・残高一覧</value>
   </data>
   <data name="Settings.Text" xml:space="preserve">
     <value>設定</value>

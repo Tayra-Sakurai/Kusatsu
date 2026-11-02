@@ -18,6 +18,9 @@
   <ItemGroup>
     <None Remove="Pages\CategoriesPage.xaml" />
     <None Remove="Pages\CategoryPage.xaml" />
+    <None Remove="Pages\MethodsPage.xaml" />
+    <None Remove="UserControls\MethodEdit.xaml" />
+    <None Remove="UserControls\MethodsView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -82,12 +85,27 @@
     <ProjectReference Include="..\Maiko\Maiko.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Pages\MethodsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MethodEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Pages\CategoryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\CategoriesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MethodsView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Kusatsu.UserControls.MethodsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Kusatsu.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:Maiko.Models"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d">
+
+    <Grid RowSpacing="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListView
+            ItemsSource="{x:Bind viewModel.Methods}"
+            SelectedItem="{x:Bind viewModel.Method, Mode=TwoWay}">
+            <ListView.Header>
+                <controls:DataTable>
+                    <controls:DataColumn
+                        x:Uid="/DataTableResources/Id"
+                        DesiredWidth="Auto" />
+                    <controls:DataColumn
+                        x:Uid="/DataTableResources/Name"
+                        DesiredWidth="*" />
+                    <controls:DataColumn
+                        x:Uid="/DataTableResources/Balance"
+                        DesiredWidth="Auto" />
+                </controls:DataTable>
+            </ListView.Header>
+
+            <ListView.ItemTemplate>
+                <DataTemplate
+                    x:DataType="models:Method">
+                    <controls:DataRow>
+                        <TextBlock Text="{x:Bind Id}" />
+                        <TextBlock Text="{x:Bind Name}" />
+                        <TextBlock Text="{x:Bind Remainder}" />
+                    </controls:DataRow>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.ItemContainerStyle>
+                <Style
+                    TargetType="ListViewItem"
+                    BasedOn="{StaticResource DefaultListViewItemStyle}">
+                    <Setter
+                        Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+        <CommandBar
+            DefaultLabelPosition="Bottom"
+            Grid.Row="1">
+            <AppBarButton
+                Icon="Document"
+                x:Uid="/ButtonResources/Detail"
+                Command="{x:Bind viewModel.DetailCommand}" />
+
+            <AppBarButton
+                Icon="Sync"
+                x:Uid="/ButtonResources/Sync"
+                Command="{x:Bind viewModel.LoadCommand}" />
+        </CommandBar>
+    </Grid>
+</UserControl>

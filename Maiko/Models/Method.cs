@@ -12,7 +12,7 @@ namespace Maiko.Models
     {
         public string Name { get; set; } = string.Empty;
         public int Id { get; set; }
-        public ObservableCollection<Item> Items { get; } = [];
+        public HashSet<Item> Items { get; } = [];
         public double Remainder => Items.Sum(item => item.IsExpense ? -item.Amount : item.Amount);
     }
 }

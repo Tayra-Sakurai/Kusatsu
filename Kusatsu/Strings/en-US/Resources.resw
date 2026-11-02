@@ -132,8 +132,20 @@
   <data name="DeleteCheckMessage.Text" xml:space="preserve">
     <value>You are trying to delete a record permanently. This action is irreversible. Are you sure to delete the record?</value>
   </data>
+  <data name="ExpensesPage.Text" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
   <data name="Home.Text" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="IncomesPage.Text" xml:space="preserve">
+    <value>Incomes</value>
+  </data>
+  <data name="ItemsHomePage.Text" xml:space="preserve">
+    <value>Balance Sheets</value>
+  </data>
+  <data name="MethodsPage.Text" xml:space="preserve">
+    <value>Payment Methods</value>
   </data>
   <data name="Settings.Text" xml:space="preserve">
     <value>Settings</value>
