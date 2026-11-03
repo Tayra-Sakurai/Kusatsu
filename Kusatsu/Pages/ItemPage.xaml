@@ -99,6 +99,8 @@
 
                     <tc:ValidationNumberBox
                         Grid.Column="1"
+                        Property="Amount"
+                        NotifyDataErrorInfo="{x:Bind viewModel}"
                         Value="{x:Bind viewModel.Amount, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
                         x:Uid="/ControlResources/Amount" />
                 </Grid>
