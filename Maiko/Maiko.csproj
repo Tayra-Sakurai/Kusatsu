@@ -9,7 +9,7 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <Version>0.0.1-alpha.3</Version>
+    <Version>1.0.0-beta.1</Version>
     <Authors>Tayra Sakurai</Authors>
     <Copyright>Copyright (C) 2026 Tayra Sakurai</Copyright>
     <Description>A database package for Kusatsu.</Description>
@@ -17,12 +17,12 @@
     <RepositoryUrl>https://github.com/Tayra-Sakurai/Kusatsu</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>WinUI;Windows App SDK;Entity Framework Core</PackageTags>
-    <PackageReleaseNotes>First Alpha test.</PackageReleaseNotes>
+    <PackageReleaseNotes>First beta test.</PackageReleaseNotes>
     <NeutralLanguage>ja-JP</NeutralLanguage>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>0.0.1.2</AssemblyVersion>
-    <FileVersion>0.0.1.2</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\README.md">

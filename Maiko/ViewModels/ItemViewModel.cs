@@ -163,96 +163,59 @@ namespace Maiko.ViewModels
             }
         }
 
-        /// <summary>
-        /// The previously selected large category.
-        /// </summary>
-        /// <remarks>
-        /// This is used to compare with the new value.
-        /// </remarks>
-        private LargeCategory? prevLargeCategory;
-
-        /// <summary>
-        /// The previously selected medium category.
-        /// </summary>
-        private MediumCategory? prevMediumCategory;
+        private LargeCategory? largeCategory;
+        private MediumCategory? mediumCategory;
 
         [Required]
         public LargeCategory? LargeCategory
         {
-            get
-            {
-                if (LargeCategories.Any(lc => MediumCategories.All(mc => mc.LargeCategoryId == lc.Id)))
-                    LargeCategories.FirstOrDefault(lc => MediumCategories.All(mc => mc.LargeCategoryId == lc.Id));
-
-                return LargeCategories.FirstOrDefault();
-            }
+            get => largeCategory;
 
             set
             {
                 ValidateProperty(value);
-                if (value is null)
+                if (value is null || largeCategory?.Id == value.Id)
                 {
-                    OnPropertyChanged();
                     return;
                 }
 
-                if (value.Id != MediumCategory?.LargeCategoryId)
-                {
-                    MediumCategories.Clear();
+                largeCategory = value;
+                OnPropertyChanged();
 
-                    foreach (
-                        MediumCategory mc in value.MediumCategories)
-                        MediumCategories.Add(mc);
+                MediumCategories.Clear();
 
-                    MediumCategory = MediumCategories.FirstOrDefault();
-                }
+                foreach (
+                    MediumCategory mc in value.MediumCategories)
+                    MediumCategories.Add(mc);
 
-                if (prevLargeCategory?.Id != value.Id)
-                {
-                    OnPropertyChanged();
-                    prevLargeCategory = value;
-                }
+                MediumCategory = MediumCategories.FirstOrDefault();
             }
         }
 
         [Required]
         public MediumCategory? MediumCategory
         {
-            get
-            {
-                if (MediumCategories.Any(mc => mc.Id == SmallCategory?.MediumCategoryId))
-                    return MediumCategories.FirstOrDefault(mc => mc.Id == SmallCategory?.MediumCategoryId);
-
-                return MediumCategories.FirstOrDefault();
-            }
+            get => mediumCategory;
 
             set
             {
                 ValidateProperty(value);
 
-                if (value == null)
+                if (value == null || mediumCategory?.Id == value.Id)
                 {
-                    OnPropertyChanged();
                     return;
                 }
 
-                if (value.Id != SmallCategory?.MediumCategoryId)
-                {
-                    SmallCategories.Clear();
+                mediumCategory = value;
+                OnPropertyChanged();
 
-                    foreach (
-                        SmallCategory sc in value.SmallCategories)
-                        SmallCategories.Add(sc);
+                SmallCategories.Clear();
 
-                    SmallCategory = SmallCategories.FirstOrDefault();
-                    OnPropertyChanged(nameof(SmallCategory));
-                }
+                foreach (
+                    SmallCategory sc in value.SmallCategories)
+                    SmallCategories.Add(sc);
 
-                if (prevMediumCategory?.Id != value.Id)
-                {
-                    OnPropertyChanged();
-                    prevMediumCategory = value;
-                }
+                SmallCategory = SmallCategories.FirstOrDefault();
             }
         }
 
@@ -270,18 +233,14 @@ namespace Maiko.ViewModels
             set
             {
                 ValidateProperty(value);
-                if (value == null)
+                if (value == null || item.CategoryId == value.Id)
                 {
-                    OnPropertyChanged();
                     return;
                 }
 
-                if (value.Id != item.CategoryId)
-                {
-                    item.CategoryId = value.Id;
-                    item.Category = value;
-                    OnPropertyChanged();
-                }
+                item.CategoryId = value.Id;
+                item.Category = value;
+                OnPropertyChanged();
             }
         }
 
@@ -348,6 +307,9 @@ namespace Maiko.ViewModels
 
                 foreach (SmallCategory smallCategory in mc.SmallCategories)
                     SmallCategories.Add(smallCategory);
+
+                largeCategory = lc;
+                mediumCategory = mc;
 
                 OnPropertyChanged(nameof(SmallCategory));
                 OnPropertyChanged(nameof(MediumCategory));
