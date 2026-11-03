@@ -75,6 +75,9 @@ namespace Kusatsu
                     case "methods":
                         NavFrame.Navigate(typeof(MethodsPage));
                         break;
+                    case "items":
+                        NavFrame.Navigate(typeof(ItemsPage));
+                        break;
                     default:
                         throw new InvalidOperationException($"Unknown navigation item tag: {item.Tag}");
                 }

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Kusatsu.Pages.ItemPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Kusatsu.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tc="using:Kusatsu.Templates"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:models="using:Maiko.Models"
+    mc:Ignorable="d">
+
+    <Grid
+        Padding="24,16"
+        RowSpacing="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Style="{StaticResource TitleTextBlockStyle}"
+            x:Uid="ItemPage" />
+
+        <Border Grid.Row="1">
+            <Grid RowSpacing="16">
+                <Grid.Resources>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Orientation" Value="Horizontal" />
+                    </Style>
+                </Grid.Resources>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Spacing="8">
+                    <CalendarDatePicker
+                        Date="{x:Bind viewModel.Date, Mode=TwoWay}"
+                        x:Uid="/ControlResources/Date" />
+                    <TimePicker
+                        SelectedTime="{x:Bind viewModel.Time, Mode=TwoWay}"
+                        x:Uid="/ControlResources/Time" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Spacing="24">
+                    <ComboBox
+                        x:Uid="/ControlResources/LargeCategory"
+                        ItemsSource="{x:Bind viewModel.LargeCategories}"
+                        SelectedItem="{x:Bind viewModel.LargeCategory, Mode=TwoWay}"
+                        DisplayMemberPath="Name" />
+                    <ComboBox
+                        x:Uid="/ControlResources/MediumCategory"
+                        ItemsSource="{x:Bind viewModel.MediumCategories}"
+                        SelectedItem="{x:Bind viewModel.MediumCategory, Mode=TwoWay}"
+                        DisplayMemberPath="Name" />
+                    <ComboBox
+                        x:Uid="/ControlResources/SmallCategory"
+                        ItemsSource="{x:Bind viewModel.SmallCategories}"
+                        SelectedItem="{x:Bind viewModel.SmallCategory, Mode=TwoWay}"
+                        DisplayMemberPath="Name" />
+                </StackPanel>
+
+                <tc:ValidationTextBox
+                    Grid.Row="2"
+                    Text="{x:Bind viewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Property="Name"
+                    NotifyDataErrorInfo="{x:Bind viewModel}"
+                    x:Uid="/ControlResources/ItemName" />
+
+                <TextBox
+                    Grid.Row="3"
+                    Text="{x:Bind viewModel.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    x:Uid="/ControlResources/Description" />
+
+                <Grid
+                    Grid.Row="4"
+                    ColumnSpacing="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox
+                        ItemsSource="{x:Bind viewModel.Methods}"
+                        SelectedItem="{x:Bind viewModel.Method, Mode=TwoWay}"
+                        VerticalAlignment="Top"
+                        DisplayMemberPath="Name"
+                        x:Uid="/ControlResources/Methods" />
+
+                    <tc:ValidationNumberBox
+                        Grid.Column="1"
+                        Value="{x:Bind viewModel.Amount, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                        x:Uid="/ControlResources/Amount" />
+                </Grid>
+
+                <controls:TokenizingTextBox
+                    Grid.Row="5"
+                    x:Name="TagsBox"
+                    x:Uid="/ControlResources/Tags"
+                    TokenDelimiter=" "
+                    TextMemberPath="Name"
+                    ItemsSource="{x:Bind viewModel.Tags, Mode=TwoWay}"
+                    SuggestedItemsSource="{x:Bind viewModel.AllTags, Mode=OneWay}">
+                    <controls:TokenizingTextBox.SuggestedItemTemplate>
+                        <DataTemplate x:DataType="models:Tag">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Width="16">
+                                    <SymbolIcon Symbol="Tag" />
+                                </Viewbox>
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </controls:TokenizingTextBox.SuggestedItemTemplate>
+                    <controls:TokenizingTextBox.TokenItemTemplate>
+                        <DataTemplate x:DataType="models:Tag">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Width="16">
+                                    <SymbolIcon Symbol="Tag" />
+                                </Viewbox>
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </controls:TokenizingTextBox.TokenItemTemplate>
+                </controls:TokenizingTextBox>
+            </Grid>
+        </Border>
+
+        <CommandBar
+            Grid.Row="2"
+            DefaultLabelPosition="Bottom">
+            <AppBarButton
+                Icon="Save"
+                x:Uid="/ButtonResources/Save"
+                Command="{x:Bind viewModel.SaveCommand}" />
+            <AppBarButton
+                Icon="Delete"
+                x:Uid="/ButtonResources/Delete">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBlock
+                                Style="{StaticResource BaseTextBlockStyle}"
+                                x:Uid="DeleteCheckMessage" />
+                            <Button
+                                Style="{StaticResource AccentButtonStyle}"
+                                Command="{x:Bind viewModel.RemoveCommand}"
+                                x:Uid="/ButtonResources/DeleteConfirm" />
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+    </Grid>
+</Page>

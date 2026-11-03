@@ -141,6 +141,9 @@
   <data name="IncomesPage.Text" xml:space="preserve">
     <value>Incomes</value>
   </data>
+  <data name="ItemPage.Text" xml:space="preserve">
+    <value>Editing an Item</value>
+  </data>
   <data name="ItemsHomePage.Text" xml:space="preserve">
     <value>Balance Sheets</value>
   </data>

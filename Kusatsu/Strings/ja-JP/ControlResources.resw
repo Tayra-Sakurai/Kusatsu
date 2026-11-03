@@ -132,6 +132,9 @@
   <data name="Date.Header" xml:space="preserve">
     <value>日付</value>
   </data>
+  <data name="Description.Header" xml:space="preserve">
+    <value>説明</value>
+  </data>
   <data name="ItemName.Header" xml:space="preserve">
     <value>概要</value>
   </data>
@@ -147,8 +150,17 @@
   <data name="Name.Header" xml:space="preserve">
     <value>名称</value>
   </data>
+  <data name="Search.Header" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Search.PlaceholderText" xml:space="preserve">
+    <value>検索フレーズを入力</value>
+  </data>
   <data name="SmallCategory.Header" xml:space="preserve">
     <value>小分類</value>
+  </data>
+  <data name="Tags.Header" xml:space="preserve">
+    <value>タグ</value>
   </data>
   <data name="Time.Header" xml:space="preserve">
     <value>時刻</value>

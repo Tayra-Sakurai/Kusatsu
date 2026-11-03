@@ -132,6 +132,9 @@
   <data name="Date.Header" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="Description.Header" xml:space="preserve">
+    <value>Descriptions</value>
+  </data>
   <data name="ItemName.Header" xml:space="preserve">
     <value>Item Summary</value>
   </data>
@@ -147,8 +150,17 @@
   <data name="Name.Header" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Search.Header" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Search.PlaceholderText" xml:space="preserve">
+    <value>Enter search phrase</value>
+  </data>
   <data name="SmallCategory.Header" xml:space="preserve">
     <value>Small Category</value>
+  </data>
+  <data name="Tags.Header" xml:space="preserve">
+    <value>Tags</value>
   </data>
   <data name="Time.Header" xml:space="preserve">
     <value>The Time</value>

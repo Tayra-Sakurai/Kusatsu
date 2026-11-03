@@ -50,6 +50,10 @@
                         <FontIcon Glyph="&#xEA3A;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem
+                    x:Uid="/NavigationResources/Items"
+                    Tag="items"
+                    Icon="Page" />
                 <NavigationViewItem x:Uid="/NavigationResources/Methods" Tag="methods">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE8C7;" />

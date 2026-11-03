@@ -123,6 +123,9 @@
   <data name="Home.Content" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Items.Content" xml:space="preserve">
+    <value>Balance Sheets</value>
+  </data>
   <data name="Methods.Content" xml:space="preserve">
     <value>Remainders</value>
   </data>

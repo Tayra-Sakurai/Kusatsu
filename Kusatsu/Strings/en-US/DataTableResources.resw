@@ -126,6 +126,9 @@
   <data name="Budget.Content" xml:space="preserve">
     <value>Budget</value>
   </data>
+  <data name="DateTime.Content" xml:space="preserve">
+    <value>Date and Time</value>
+  </data>
   <data name="Expense.Content" xml:space="preserve">
     <value>Expense</value>
   </data>
@@ -135,10 +138,22 @@
   <data name="Income.Content" xml:space="preserve">
     <value>Income</value>
   </data>
+  <data name="LargeCategory.Content" xml:space="preserve">
+    <value>Large Category</value>
+  </data>
+  <data name="MediumCategory.Content" xml:space="preserve">
+    <value>Medium Category</value>
+  </data>
+  <data name="Method.Content" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
   <data name="Monthly.Content" xml:space="preserve">
     <value>Monthly Expense</value>
   </data>
   <data name="Name.Content" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="SmallCategory.Content" xml:space="preserve">
+    <value>Small Category</value>
   </data>
 </root>

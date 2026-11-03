@@ -106,6 +106,8 @@ namespace Kusatsu
             services.AddTransient<CategoryViewModel>();
             services.AddTransient<MethodsViewModel>();
             services.AddTransient<MethodViewModel>();
+            services.AddTransient<ItemsViewModel>();
+            services.AddTransient<ItemViewModel>();
 
             if (isAiEnabled)
             {

@@ -16,8 +16,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="DataTemplates\ItemTableTemplate.xaml" />
     <None Remove="Pages\CategoriesPage.xaml" />
     <None Remove="Pages\CategoryPage.xaml" />
+    <None Remove="Pages\ExpensePage.xaml" />
+    <None Remove="Pages\IncomePage.xaml" />
+    <None Remove="Pages\ItemPage.xaml" />
     <None Remove="Pages\ItemsPage.xaml" />
     <None Remove="Pages\MethodsPage.xaml" />
     <None Remove="UserControls\MethodEdit.xaml" />
@@ -68,6 +72,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="*" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.HeaderedControls" Version="*" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="*" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.TokenizingTextBox" Version="*-*" />
     <PackageReference Include="Microsoft.Agents.AI" Version="*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.*" />
@@ -84,6 +89,21 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maiko\Maiko.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\ItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\IncomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\ExpensePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\ItemsPage.xaml">
@@ -112,6 +132,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="UserControls\MethodsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DataTemplates\ItemTableTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

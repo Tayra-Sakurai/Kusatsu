@@ -12,6 +12,6 @@ namespace Maiko.Models
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public ObservableCollection<Item> Items { get; } = [];
+        public HashSet<Item> Items { get; } = [];
     }
 }

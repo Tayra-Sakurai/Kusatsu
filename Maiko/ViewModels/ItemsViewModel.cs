@@ -123,7 +123,7 @@ namespace Maiko.ViewModels
                 Expenses.Add(expense);
         }
 
-        public virtual void FilterCandidatesAsync()
+        public virtual void FilterCandidates()
         {
             string[] phrases = Phrase.Split(" ");
             string prefix = string.Join(" ", phrases.SkipLast(1));

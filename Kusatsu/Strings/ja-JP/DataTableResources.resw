@@ -126,6 +126,9 @@
   <data name="Budget.Content" xml:space="preserve">
     <value>予算</value>
   </data>
+  <data name="DateTime.Content" xml:space="preserve">
+    <value>日時</value>
+  </data>
   <data name="Expense.Content" xml:space="preserve">
     <value>支出</value>
   </data>
@@ -135,10 +138,22 @@
   <data name="Income.Content" xml:space="preserve">
     <value>収入</value>
   </data>
+  <data name="LargeCategory.Content" xml:space="preserve">
+    <value>大分類</value>
+  </data>
+  <data name="MediumCategory.Content" xml:space="preserve">
+    <value>中分類</value>
+  </data>
+  <data name="Method.Content" xml:space="preserve">
+    <value>決済手段</value>
+  </data>
   <data name="Monthly.Content" xml:space="preserve">
     <value>今月の支出</value>
   </data>
   <data name="Name.Content" xml:space="preserve">
     <value>名称</value>
+  </data>
+  <data name="SmallCategory.Content" xml:space="preserve">
+    <value>小分類</value>
   </data>
 </root>
