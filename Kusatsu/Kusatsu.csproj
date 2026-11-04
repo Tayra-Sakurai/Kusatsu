@@ -69,7 +69,9 @@
   -->
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Labs.WinUI.Controls.DataTable" Version="*-*" />
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.Controls.MarkdownTextBlock" Version="*-*" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="*" />
+    <PackageReference Include="CommunityToolkit.VectorData.SqliteVec" Version="*-preview.*" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.HeaderedControls" Version="*" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="*" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.TokenizingTextBox" Version="*-*" />
@@ -82,12 +84,14 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="*" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="*" />
+    <PackageReference Include="Microsoft.Extensions.VectorData.Abstractions" Version="10.*" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*-*" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="*-experimental.*" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools.WinApp" Version="*-*" />
     <PackageReference Include="OllamaSharp" Version="*" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Imazu\Imazu.csproj" />
     <ProjectReference Include="..\Maiko\Maiko.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -158,7 +162,7 @@
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">False</PublishTrimmed>
     <DefaultLanguage>ja-JP</DefaultLanguage>
     <Title>Kusatsu</Title>
-    <Version>1.0.1-beta.2</Version>
+    <Version>1.1.0-beta.1</Version>
     <Authors>Tayra Sakurai</Authors>
     <Copyright>Copyright (C) 2026 Tayra Sakurai</Copyright>
     <RepositoryUrl>https://github.com/Tayra-Sakurai/Kusatsu</RepositoryUrl>
@@ -169,7 +173,7 @@
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageCertificateThumbprint></PackageCertificateThumbprint>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
 </Project>

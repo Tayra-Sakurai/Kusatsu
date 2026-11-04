@@ -147,6 +147,12 @@
   <data name="ItemsHomePage.Text" xml:space="preserve">
     <value>Balance Sheets</value>
   </data>
+  <data name="LocalAIEnabled.Description" xml:space="preserve">
+    <value>Enable local AI features.</value>
+  </data>
+  <data name="LocalAIIEnabled.Header" xml:space="preserve">
+    <value>Local AI</value>
+  </data>
   <data name="MethodsPage.Text" xml:space="preserve">
     <value>Payment Methods</value>
   </data>

@@ -141,6 +141,12 @@
   <data name="LargeCategory.Header" xml:space="preserve">
     <value>Large Category</value>
   </data>
+  <data name="LocalAISwitch.OffContent" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="LocalAISwitch.OnContent" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
   <data name="MediumCategory.Header" xml:space="preserve">
     <value>Medium Category</value>
   </data>

@@ -8,6 +8,7 @@
     <File Path=".editorconfig" />
     <File Path="nuget.config" />
   </Folder>
+  <Project Path="Imazu/Imazu.csproj" Id="8d888f87-dd30-4dfc-9b37-b957d1e0e4df" />
   <Project Path="Kusatsu/Kusatsu.csproj">
     <Platform Solution="*|ARM64" Project="ARM64" />
     <Platform Solution="*|x64" Project="x64" />

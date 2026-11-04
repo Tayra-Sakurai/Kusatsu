@@ -11,7 +11,7 @@ namespace Maiko.Models
     {
         public int MediumCategoryId { get; set; }
         public MediumCategory? MediumCategory { get; set; }
-        public ICollection<Item> Items { get; } = new HashSet<Item>();
+        public List<Item> Items { get; } = [];
         public double TotalIncome => Items.Sum(i => i.IsExpense ? 0d : i.Amount);
         public double TotalExpense => Items.Sum(i => i.IsExpense ? i.Amount : 0d);
         public double MonthlyTotal => 

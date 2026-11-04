@@ -3,6 +3,7 @@
 
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Kusatsu.Models;
+using Kusatsu.ViewModels;
 using Maiko.Contexts;
 using Maiko.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -108,6 +109,7 @@ namespace Kusatsu
             services.AddTransient<MethodViewModel>();
             services.AddTransient<ItemsViewModel>();
             services.AddTransient<ItemViewModel>();
+            services.AddTransient<SettingsViewModel>();
 
             if (isAiEnabled)
             {

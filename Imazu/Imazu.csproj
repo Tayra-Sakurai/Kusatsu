@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.22000.0</TargetPlatformMinVersion>
+    <RootNamespace>Imazu</RootNamespace>
+    <UseWinUI>true</UseWinUI>
+    <WinUISDKReferences>false</WinUISDKReferences>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <Nullable>enable</Nullable>
+    <PackageVersion>1.1.0-beta.1</PackageVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="*" />
+    <PackageReference Include="Microsoft.Agents.AI" Version="*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.*" />
+    <PackageReference Include="Microsoft.Extensions.VectorData.Abstractions" Version="10.*" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*-*" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*-experimental.*" />
+    <PackageReference Include="OllamaSharp" Version="*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Maiko\Maiko.csproj" />
+    <ProjectReference Include="..\Tayra.CommunityToolkit.Localized.Mvvm\Tayra.CommunityToolkit.Localized.Mvvm.csproj" />
+  </ItemGroup>
+</Project>

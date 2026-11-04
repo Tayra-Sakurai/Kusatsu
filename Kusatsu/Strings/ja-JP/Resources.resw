@@ -147,6 +147,12 @@
   <data name="ItemsHomePage.Text" xml:space="preserve">
     <value>収支表</value>
   </data>
+  <data name="LocalAIEnabled.Description" xml:space="preserve">
+    <value>ローカルAI機能を有効化します。</value>
+  </data>
+  <data name="LocalAIIEnabled.Header" xml:space="preserve">
+    <value>ローカルAI機能</value>
+  </data>
   <data name="MethodsPage.Text" xml:space="preserve">
     <value>決済手段・残高一覧</value>
   </data>

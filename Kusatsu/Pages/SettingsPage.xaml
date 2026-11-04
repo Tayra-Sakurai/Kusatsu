@@ -18,7 +18,7 @@
         <TextBlock Style="{StaticResource TitleTextBlockStyle}" x:Uid="Settings" />
         <StackPanel
             Grid.Row="1"
-            Spacing="4">
+            Spacing="8">
             <controls:SettingsCard
                 x:Name="CategoryJumper"
                 x:Uid="Category"
@@ -27,6 +27,15 @@
                 <TextBlock
                     Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                     x:Uid="CategoryJumpText" />
+            </controls:SettingsCard>
+
+            <controls:SettingsCard
+                x:Name="LocalAI"
+                x:Uid="LocalAIEnabled"
+                HeaderIcon="{ui:FontIcon Glyph=&#xE99A;}">
+                <ToggleSwitch
+                    IsOn="{x:Bind viewModel.IsAIEnabled, Mode=TwoWay}"
+                    x:Uid="/ControlResources/LocalAISwitch" />
             </controls:SettingsCard>
         </StackPanel>
     </Grid>
