@@ -129,6 +129,9 @@
   <data name="CategoryPage.Text" xml:space="preserve">
     <value>Detail on a Category</value>
   </data>
+  <data name="ChatPage.Text" xml:space="preserve">
+    <value>Chat</value>
+  </data>
   <data name="DeleteCheckMessage.Text" xml:space="preserve">
     <value>You are trying to delete a record permanently. This action is irreversible. Are you sure to delete the record?</value>
   </data>
@@ -150,7 +153,7 @@
   <data name="LocalAIEnabled.Description" xml:space="preserve">
     <value>Enable local AI features.</value>
   </data>
-  <data name="LocalAIIEnabled.Header" xml:space="preserve">
+  <data name="LocalAIEnabled.Header" xml:space="preserve">
     <value>Local AI</value>
   </data>
   <data name="MethodsPage.Text" xml:space="preserve">
@@ -158,5 +161,8 @@
   </data>
   <data name="Settings.Text" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="UserMessageRole.Text" xml:space="preserve">
+    <value>You</value>
   </data>
 </root>

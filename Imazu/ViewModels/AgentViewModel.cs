@@ -122,40 +122,51 @@ namespace Imazu.ViewModels
             session = await agent.CreateSessionAsync();
         }
 
-        [RelayCommand(AllowConcurrentExecutions = false, CanExecute = nameof(CanRespondToRequest))]
-        private async Task ApproveRequestAsync(ToolApprovalRequestContent? toolApprovalRequestContent)
+        [RelayCommand(AllowConcurrentExecutions = false, CanExecute = nameof(CanRespondToolRequest))]
+        private async Task ApproveToolAsync(IEnumerable<object>? toolApprovalRequestContents)
         {
-            if (toolApprovalRequestContent == null ||
-                session is null)
+            if (toolApprovalRequestContents is null ||
+                !toolApprovalRequestContents.OfType<ToolApprovalRequestContent>().Any())
                 return;
 
-            ChatMessage chatMessage = new(ChatRole.User, [toolApprovalRequestContent.CreateResponse(true)]);
+            List<ToolApprovalRequestContent> toolApprovalRequestContents1 = [.. toolApprovalRequestContents.OfType<ToolApprovalRequestContent>()];
 
-            ToolApprovalRequestContents.Remove(toolApprovalRequestContent);
+            ChatMessage message = new(
+                ChatRole.User,
+                [.. toolApprovalRequestContents1.Select(content => content.CreateResponse(true))]);
+            AgentResponse response = await agent.RunAsync(message, session);
 
-            AgentResponse response = await agent.RunAsync(chatMessage, session);
+            foreach (
+                ToolApprovalRequestContent toolApprovalRequestContent in toolApprovalRequestContents1)
+                ToolApprovalRequestContents.Remove(toolApprovalRequestContent);
 
             ProcessResponse(response);
         }
 
-        [RelayCommand(AllowConcurrentExecutions = false, CanExecute = nameof(CanRespondToRequest))]
-        private async Task RejectRequestAsync(ToolApprovalRequestContent? toolApprovalRequestContent)
+        [RelayCommand(AllowConcurrentExecutions = false, CanExecute = nameof(CanRespondToolRequest))]
+        private async Task RejectToolAsync(IEnumerable<object>? toolApprovalRequestContents)
         {
-            if (session is null ||
-                toolApprovalRequestContent is null)
+            if (toolApprovalRequestContents is null ||
+                !toolApprovalRequestContents.OfType<ToolApprovalRequestContent>().Any())
                 return;
 
-            ChatMessage chatMessage = new(ChatRole.User, [toolApprovalRequestContent.CreateResponse(false)]);
+            IEnumerable<ToolApprovalRequestContent> toolApprovalRequestContents1 = toolApprovalRequestContents.OfType<ToolApprovalRequestContent>();
+            ChatMessage message = new(
+                ChatRole.User,
+                [.. toolApprovalRequestContents1.Select(content => content.CreateResponse(false))]);
+            AgentResponse response = await agent.RunAsync(message, session);
 
-            ToolApprovalRequestContents.Remove(toolApprovalRequestContent);
+            foreach (
+                ToolApprovalRequestContent toolApprovalRequestContent in toolApprovalRequestContents1)
+                ToolApprovalRequestContents.Remove(toolApprovalRequestContent);
 
-            AgentResponse agentResponse = await agent.RunAsync(chatMessage, session);
-            ProcessResponse(agentResponse);
+            ProcessResponse(response);
         }
 
-        private static bool CanRespondToRequest(ToolApprovalRequestContent? toolApprovalRequestContent)
+        private static bool CanRespondToolRequest(IEnumerable<object>? toolApprovalRequestContents)
         {
-            return toolApprovalRequestContent is not null;
+            return toolApprovalRequestContents is not null &&
+                toolApprovalRequestContents.OfType<ToolApprovalRequestContent>().Any();
         }
     }
 }

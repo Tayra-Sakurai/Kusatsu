@@ -120,6 +120,9 @@
   <data name="About.Content" xml:space="preserve">
     <value>アプリの情報</value>
   </data>
+  <data name="Chat.Content" xml:space="preserve">
+    <value>チャット</value>
+  </data>
   <data name="Home.Content" xml:space="preserve">
     <value>ホーム</value>
   </data>

@@ -6,6 +6,7 @@ using Kusatsu.Pages;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.Windows.Storage;
 using System.Text.Json;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -24,6 +25,8 @@ namespace Kusatsu
             AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
             AppWindow.SetIcon("Assets/AppIcon.ico");
             AppWindow.Closing += AppWindow_Closing;
+
+            ChatLink.IsEnabled = ApplicationData.GetDefault().LocalSettings.Values["IsAIEnabled"] is true;
         }
 
         private async void AppWindow_Closing(AppWindow sender, AppWindowClosingEventArgs args)
@@ -77,6 +80,9 @@ namespace Kusatsu
                         break;
                     case "items":
                         NavFrame.Navigate(typeof(ItemsPage));
+                        break;
+                    case "chat":
+                        NavFrame.Navigate(typeof(ChatPage));
                         break;
                     default:
                         throw new InvalidOperationException($"Unknown navigation item tag: {item.Tag}");

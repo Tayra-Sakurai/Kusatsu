@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Kusatsu.Pages.ChatPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Kusatsu.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:Imazu.Models"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:meai="using:Microsoft.Extensions.AI"
+    mc:Ignorable="d">
+
+    <Grid Padding="24,16" RowSpacing="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Uid="ChatPage"
+            Style="{StaticResource TitleTextBlockStyle}" />
+
+        <Border
+            Grid.Row="1"
+            BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+            CornerRadius="{StaticResource ControlCornerRadius}"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+            <Grid RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" MaxHeight="80" />
+                    <RowDefinition Height="Auto" MaxHeight="72" />
+                </Grid.RowDefinitions>
+
+                <Grid.Resources>
+                    <DataTemplate
+                        x:Key="ChatMessageTemplateA"
+                        x:DataType="models:ChatTextData">
+                        <Border
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            Background="{ThemeResource SolidBackgroundFillColorBaseAltBrush}"
+                            Margin="0,12,24,12">
+                            <StackPanel Spacing="4">
+                                <TextBlock
+                                    Style="{StaticResource BodyLargeStrongTextBlockStyle}"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                    Text="Perry" />
+
+                                <controls:MarkdownTextBlock
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Bind Text}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+
+                    <DataTemplate
+                        x:Key="ChatMessageTemplateU"
+                        x:DataType="models:ChatTextData">
+                        <Border
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            Background="{ThemeResource AccentFillColorDefaultBrush}"
+                            Margin="24,12,0,12">
+                            <StackPanel Spacing="4">
+                                <TextBlock
+                                    Style="{StaticResource BodyLargeStrongTextBlockStyle}"
+                                    Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                                    x:Uid="UserMessageRole" />
+
+                                <controls:MarkdownTextBlock
+                                    Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                                    Text="{x:Bind Text}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+
+                    <local:ChatTemplateSelector
+                        AssistantTemplate="{StaticResource ChatMessageTemplateA}"
+                        UserTemplate="{StaticResource ChatMessageTemplateU}"
+                        x:Key="ChatMessageTemplateSelector" />
+
+                    <ItemsPanelTemplate
+                        x:Key="SessionTemplate">
+                        <ItemsStackPanel
+                            ItemsUpdatingScrollMode="KeepLastItemInView"
+                            VerticalAlignment="Bottom" />
+                    </ItemsPanelTemplate>
+
+                    <Style
+                        x:Key="ChatContainerStyle"
+                        TargetType="ListViewItem"
+                        BasedOn="{StaticResource DefaultListViewItemStyle}">
+                        <Setter
+                            Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                    </Style>
+
+                    <DataTemplate
+                        x:DataType="meai:ToolApprovalRequestContent"
+                        x:Key="RequestTemplate">
+                        <TextBlock Text="{x:Bind RequestId}" Padding="0,4" />
+                    </DataTemplate>
+                </Grid.Resources>
+
+                <ListView
+                    ItemsSource="{x:Bind viewModel.TextData}"
+                    ItemTemplateSelector="{StaticResource ChatMessageTemplateSelector}"
+                    ItemsPanel="{StaticResource SessionTemplate}"
+                    ItemContainerStyle="{StaticResource ChatContainerStyle}" />
+
+                <Grid
+                    Grid.Row="1"
+                    RowSpacing="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <ListView
+                        x:Name="Requests"
+                        ItemsSource="{x:Bind viewModel.ToolApprovalRequestContents}"
+                        ItemContainerStyle="{StaticResource ChatContainerStyle}"
+                        ItemTemplate="{StaticResource RequestTemplate}" />
+
+                    <StackPanel
+                        Grid.Row="1"
+                        Spacing="8"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Uid="/ButtonResources/Approve"
+                            Command="{x:Bind viewModel.ApproveToolCommand}"
+                            CommandParameter="{x:Bind Requests.SelectedItems, Mode=OneWay}" />
+                        <Button
+                            x:Uid="/ButtonResources/Reject"
+                            Command="{x:Bind viewModel.RejectToolCommand}"
+                            CommandParameter="{x:Bind Requests.SelectedItems, Mode=OneWay}" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid
+                    ColumnSpacing="8"
+                    Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="SuperTextBox" />
+
+                    <AppBarButton
+                        x:Uid="/ButtonResources/Send"
+                        Grid.Column="1"
+                        Icon="Send"
+                        Command="{x:Bind viewModel.InvokeCommand}"
+                        CommandParameter="{x:Bind SuperTextBox.Text, Mode=OneWay}" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

@@ -2,11 +2,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using CommunityToolkit.Mvvm.DependencyInjection;
+using Imazu.ViewModels;
 using Kusatsu.Models;
 using Kusatsu.ViewModels;
 using Maiko.Contexts;
 using Maiko.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -116,6 +118,13 @@ namespace Kusatsu
                 services.AddChatClient(new OllamaApiClient(
                     new Uri("http://localhost:11434/api"),
                     "gemma4:e2b"));
+                services.AddEmbeddingGenerator(new OllamaApiClient(
+                    new Uri("http://localhost:11434/api"),
+                    "embeddinggemma:latest"));
+                services.AddSqliteVectorStore(
+                    provider => $"Data Source={System.IO.Path.Join(Microsoft.Windows.Storage.ApplicationData.GetDefault().LocalFolder.Path, "Context.sqlite3")}",
+                    provider => new() { EmbeddingGenerator = provider.GetRequiredService<IEmbeddingGenerator<string, Embedding<float>>>() });
+                services.AddTransient<AgentViewModel>();
             }
 
             return services.BuildServiceProvider();

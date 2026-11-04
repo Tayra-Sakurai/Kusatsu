@@ -19,6 +19,7 @@
     <None Remove="DataTemplates\ItemTableTemplate.xaml" />
     <None Remove="Pages\CategoriesPage.xaml" />
     <None Remove="Pages\CategoryPage.xaml" />
+    <None Remove="Pages\ChatPage.xaml" />
     <None Remove="Pages\ExpensePage.xaml" />
     <None Remove="Pages\IncomePage.xaml" />
     <None Remove="Pages\ItemPage.xaml" />
@@ -93,6 +94,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Imazu\Imazu.csproj" />
     <ProjectReference Include="..\Maiko\Maiko.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\ChatPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\ItemPage.xaml">

@@ -59,6 +59,11 @@
                         <FontIcon Glyph="&#xE8C7;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem
+                    x:Uid="/NavigationResources/Chat"
+                    x:Name="ChatLink"
+                    Tag="chat"
+                    Icon="Message" />
             </NavigationView.MenuItems>
             <Frame x:Name="NavFrame" />
         </NavigationView>

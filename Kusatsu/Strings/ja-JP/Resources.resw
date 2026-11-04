@@ -129,6 +129,9 @@
   <data name="CategoryPage.Text" xml:space="preserve">
     <value>分類の詳細</value>
   </data>
+  <data name="ChatPage.Text" xml:space="preserve">
+    <value>チャット</value>
+  </data>
   <data name="DeleteCheckMessage.Text" xml:space="preserve">
     <value>あなたはレコードを削除しようとしています。この操作は取り消せません。本当に実行しますか。</value>
   </data>
@@ -150,7 +153,7 @@
   <data name="LocalAIEnabled.Description" xml:space="preserve">
     <value>ローカルAI機能を有効化します。</value>
   </data>
-  <data name="LocalAIIEnabled.Header" xml:space="preserve">
+  <data name="LocalAIEnabled.Header" xml:space="preserve">
     <value>ローカルAI機能</value>
   </data>
   <data name="MethodsPage.Text" xml:space="preserve">
@@ -158,5 +161,8 @@
   </data>
   <data name="Settings.Text" xml:space="preserve">
     <value>設定</value>
+  </data>
+  <data name="UserMessageRole.Text" xml:space="preserve">
+    <value>あなた</value>
   </data>
 </root>

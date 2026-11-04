@@ -126,6 +126,9 @@
   <data name="AddIncome.Label" xml:space="preserve">
     <value>Add income</value>
   </data>
+  <data name="Approve.Content" xml:space="preserve">
+    <value>Approve</value>
+  </data>
   <data name="Delete.Label" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -135,8 +138,14 @@
   <data name="Detail.Label" xml:space="preserve">
     <value>Details</value>
   </data>
+  <data name="Reject.Content" xml:space="preserve">
+    <value>Reject</value>
+  </data>
   <data name="Save.Label" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="Send.Label" xml:space="preserve">
+    <value>Send</value>
   </data>
   <data name="Sync.Label" xml:space="preserve">
     <value>Sync</value>
