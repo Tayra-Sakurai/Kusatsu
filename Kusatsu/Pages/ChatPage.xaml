@@ -118,6 +118,7 @@
 
                     <ListView
                         x:Name="Requests"
+                        SelectionMode="Multiple"
                         ItemsSource="{x:Bind viewModel.ToolApprovalRequestContents}"
                         ItemContainerStyle="{StaticResource ChatContainerStyle}"
                         ItemTemplate="{StaticResource RequestTemplate}" />
