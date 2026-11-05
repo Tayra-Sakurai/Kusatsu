@@ -1,0 +1,22 @@
+{
+  "name": "kusatsu",
+  "version": "1.0.0",
+  "description": "Kusatsu is a Windows application for your personal budget management.",
+  "scripts": {
+    "lint": "commitlint --last --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tayra-Sakurai/Kusatsu.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Tayra-Sakurai/Kusatsu/issues"
+  },
+  "homepage": "https://github.com/Tayra-Sakurai/Kusatsu#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4"
+  }
+}
