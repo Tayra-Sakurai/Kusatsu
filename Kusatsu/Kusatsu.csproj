@@ -168,7 +168,7 @@
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">False</PublishTrimmed>
     <DefaultLanguage>ja-JP</DefaultLanguage>
     <Title>Kusatsu</Title>
-    <Version>1.1.0-beta.3</Version>
+    <Version>1.1.0-beta.4</Version>
     <Authors>Tayra Sakurai</Authors>
     <Copyright>Copyright (C) 2026 Tayra Sakurai</Copyright>
     <RepositoryUrl>https://github.com/Tayra-Sakurai/Kusatsu</RepositoryUrl>
@@ -179,7 +179,7 @@
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageCertificateThumbprint></PackageCertificateThumbprint>
-    <AssemblyVersion>1.1.0.2</AssemblyVersion>
-    <FileVersion>1.1.0.2</FileVersion>
+    <AssemblyVersion>1.1.0.3</AssemblyVersion>
+    <FileVersion>1.1.0.3</FileVersion>
   </PropertyGroup>
 </Project>

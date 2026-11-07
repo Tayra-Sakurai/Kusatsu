@@ -22,16 +22,21 @@ namespace Kusatsu.ViewModels
         {
             settingValues = ApplicationData.GetDefault().LocalSettings.Values;
             ollama = new(new Uri("http://localhost:11434/api"));
-            Models = [];
+            Models = [EmbeddingModel, OllamaModel];
         }
 
         public async Task LoadModelsAsync()
         {
             IEnumerable<Model> models = await ollama.ListLocalModelsAsync();
+            string embedding = EmbeddingModel;
+            string chatModel = OllamaModel;
             Models.Clear();
 
             foreach (Model model in models.OrderBy(x => x.Name))
                 Models.Add(model.Name);
+
+            EmbeddingModel = embedding;
+            OllamaModel = chatModel;
         }
 
         public bool IsAIEnabled
@@ -57,14 +62,33 @@ namespace Kusatsu.ViewModels
             get => (settingValues["OllamaModel"] as string) ?? string.Empty;
             set
             {
-                settingValues["OllamaModel"] = value;
+                if (!string.IsNullOrEmpty(value))
+                {
+                    if (settingValues["OllamaModel"] is not string ollamaModel ||
+                        ollamaModel != value)
+                    {
+                        settingValues["OllamaModel"] = value;
+                        OnPropertyChanged();
+                    }
+                }
             }
         }
 
         public string EmbeddingModel
         {
             get => (settingValues["EmbeddingModel"] as string) ?? string.Empty;
-            set => settingValues["EmbeddingModel"] = value;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    return;
+
+                if (settingValues["EmbeddingModel"] is not string embeddingModel ||
+                    embeddingModel != value)
+                {
+                    settingValues["EmbeddingModel"] = value;
+                    OnPropertyChanged();
+                }
+            }
         }
     }
 }

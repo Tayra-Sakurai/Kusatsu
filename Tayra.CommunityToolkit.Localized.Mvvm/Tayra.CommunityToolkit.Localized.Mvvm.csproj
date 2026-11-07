@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <Nullable>enable</Nullable>
-    <Version>1.1.0-beta.3</Version>
+    <Version>1.1.0-beta.4</Version>
     <Authors>Tayra Sakurai</Authors>
     <Description>Community Toolkit Message localization library.</Description>
     <Copyright>Copyright (C) 2026 Tayra Sakurai</Copyright>
@@ -18,8 +18,8 @@
     <PackageTags>MVVM;CommunityToolkit;localization</PackageTags>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.1.0.2</AssemblyVersion>
-    <FileVersion>1.1.0.2</FileVersion>
+    <AssemblyVersion>1.1.0.3</AssemblyVersion>
+    <FileVersion>1.1.0.3</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
