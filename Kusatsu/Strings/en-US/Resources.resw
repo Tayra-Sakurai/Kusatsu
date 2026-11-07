@@ -129,11 +129,23 @@
   <data name="CategoryPage.Text" xml:space="preserve">
     <value>Detail on a Category</value>
   </data>
+  <data name="ChatModel.Description" xml:space="preserve">
+    <value>Please select the AI model used for chatting.</value>
+  </data>
+  <data name="ChatModel.Header" xml:space="preserve">
+    <value>Chat AI Model</value>
+  </data>
   <data name="ChatPage.Text" xml:space="preserve">
     <value>Chat</value>
   </data>
   <data name="DeleteCheckMessage.Text" xml:space="preserve">
     <value>You are trying to delete a record permanently. This action is irreversible. Are you sure to delete the record?</value>
+  </data>
+  <data name="EmbeddingModel.Description" xml:space="preserve">
+    <value>AI model used for searching</value>
+  </data>
+  <data name="EmbeddingModel.Header" xml:space="preserve">
+    <value>Embedding Model</value>
   </data>
   <data name="ExpensesPage.Text" xml:space="preserve">
     <value>Expenses</value>

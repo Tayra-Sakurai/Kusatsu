@@ -21,11 +21,12 @@ namespace Kusatsu.Pages
             CategoryJumper.Click += CategoryJumper_Click;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             viewModel = Ioc.Default.GetRequiredService<SettingsViewModel>();
+            await viewModel.LoadModelsAsync();
         }
 
         private void CategoryJumper_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

@@ -129,11 +129,23 @@
   <data name="CategoryPage.Text" xml:space="preserve">
     <value>分類の詳細</value>
   </data>
+  <data name="ChatModel.Description" xml:space="preserve">
+    <value>チャット用のLLMを指定します。</value>
+  </data>
+  <data name="ChatModel.Header" xml:space="preserve">
+    <value>チャットモデル</value>
+  </data>
   <data name="ChatPage.Text" xml:space="preserve">
     <value>チャット</value>
   </data>
   <data name="DeleteCheckMessage.Text" xml:space="preserve">
     <value>あなたはレコードを削除しようとしています。この操作は取り消せません。本当に実行しますか。</value>
+  </data>
+  <data name="EmbeddingModel.Description" xml:space="preserve">
+    <value>検索用に用いられるAIモデル</value>
+  </data>
+  <data name="EmbeddingModel.Header" xml:space="preserve">
+    <value>テキスト埋め込みモデル</value>
   </data>
   <data name="ExpensesPage.Text" xml:space="preserve">
     <value>支出の部</value>

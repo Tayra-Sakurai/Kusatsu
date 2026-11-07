@@ -19,6 +19,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using OllamaSharp;
 using System.Text.Json;
+using Windows.Foundation.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -115,12 +116,13 @@ namespace Kusatsu
 
             if (isAiEnabled)
             {
+                IPropertySet keyValuePairs = Microsoft.Windows.Storage.ApplicationData.GetDefault().LocalSettings.Values;
                 services.AddChatClient(new OllamaApiClient(
                     new Uri("http://localhost:11434/api"),
-                    "gemma4:e2b"));
+                    (keyValuePairs["OllamaModel"] as string) ?? "gemma4:e2b"));
                 services.AddEmbeddingGenerator(new OllamaApiClient(
                     new Uri("http://localhost:11434/api"),
-                    "embeddinggemma:latest"));
+                    (keyValuePairs["EmbeddingModel"] as string) ?? "embeddinggemma:latest"));
                 services.AddSqliteVectorStore(
                     provider => $"Data Source={System.IO.Path.Join(Microsoft.Windows.Storage.ApplicationData.GetDefault().LocalFolder.Path, "Context.sqlite3")}",
                     provider => new() { EmbeddingGenerator = provider.GetRequiredService<IEmbeddingGenerator<string, Embedding<float>>>() });
