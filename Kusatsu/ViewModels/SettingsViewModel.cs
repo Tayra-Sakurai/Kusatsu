@@ -22,21 +22,19 @@ namespace Kusatsu.ViewModels
         {
             settingValues = ApplicationData.GetDefault().LocalSettings.Values;
             ollama = new(new Uri("http://localhost:11434/api"));
-            Models = [EmbeddingModel, OllamaModel];
+            Models = [];
         }
 
         public async Task LoadModelsAsync()
         {
             IEnumerable<Model> models = await ollama.ListLocalModelsAsync();
-            string embedding = EmbeddingModel;
-            string chatModel = OllamaModel;
             Models.Clear();
 
             foreach (Model model in models.OrderBy(x => x.Name))
                 Models.Add(model.Name);
 
-            EmbeddingModel = embedding;
-            OllamaModel = chatModel;
+            OnPropertyChanged(nameof(OllamaModelIndex));
+            OnPropertyChanged(nameof(EmbeddingModelIndex));
         }
 
         public bool IsAIEnabled
@@ -57,35 +55,35 @@ namespace Kusatsu.ViewModels
 
         public ObservableCollection<string> Models { get; }
 
-        public string OllamaModel
+        public int OllamaModelIndex
         {
-            get => (settingValues["OllamaModel"] as string) ?? string.Empty;
+            get => Models.IndexOf(settingValues["OllamaModel"] as string ?? string.Empty);
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (value >= 0)
                 {
                     if (settingValues["OllamaModel"] is not string ollamaModel ||
-                        ollamaModel != value)
+                        ollamaModel != Models[value])
                     {
-                        settingValues["OllamaModel"] = value;
+                        settingValues["OllamaModel"] = Models[value];
                         OnPropertyChanged();
                     }
                 }
             }
         }
 
-        public string EmbeddingModel
+        public int EmbeddingModelIndex
         {
-            get => (settingValues["EmbeddingModel"] as string) ?? string.Empty;
+            get => Models.IndexOf((settingValues["EmbeddingModel"] as string) ?? string.Empty);
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if (value == -1)
                     return;
 
                 if (settingValues["EmbeddingModel"] is not string embeddingModel ||
-                    embeddingModel != value)
+                    embeddingModel != Models[value])
                 {
-                    settingValues["EmbeddingModel"] = value;
+                    settingValues["EmbeddingModel"] = Models[value];
                     OnPropertyChanged();
                 }
             }

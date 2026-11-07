@@ -42,14 +42,14 @@
                                 HeaderIcon="{ui:FontIcon Glyph=&#xE8F2;}">
                                 <ComboBox
                                     ItemsSource="{x:Bind viewModel.Models}"
-                                    SelectedItem="{x:Bind viewModel.OllamaModel, Mode=TwoWay}" />
+                                    SelectedIndex="{x:Bind viewModel.OllamaModelIndex, Mode=TwoWay}" />
                             </controls:SettingsCard>
                             <controls:SettingsCard
                                 x:Uid="EmbeddingModel"
                                 HeaderIcon="{ui:FontIcon Glyph=&#xE83B;}">
                                 <ComboBox
                                     ItemsSource="{x:Bind viewModel.Models}"
-                                    SelectedItem="{x:Bind viewModel.EmbeddingModel, Mode=TwoWay}" />
+                                    SelectedIndex="{x:Bind viewModel.EmbeddingModelIndex, Mode=TwoWay}" />
                             </controls:SettingsCard>
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
